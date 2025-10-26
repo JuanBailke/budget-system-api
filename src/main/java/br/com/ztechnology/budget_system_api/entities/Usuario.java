@@ -1,6 +1,6 @@
-package br.com.ztechnology.budget_system_api.model;
+package br.com.ztechnology.budget_system_api.entities;
 
-import br.com.ztechnology.budget_system_api.model.enums.PerfilUsuario;
+import br.com.ztechnology.budget_system_api.entities.enums.PerfilUsuario;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "id")
 @Entity
 @Table(name = "tb_usuarios")
 public class Usuario {

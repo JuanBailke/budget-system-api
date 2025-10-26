@@ -1,4 +1,4 @@
-package br.com.ztechnology.budget_system_api.model;
+package br.com.ztechnology.budget_system_api.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "id")
 @Entity
 @Table(name = "tb_clientes")
 public class Cliente {

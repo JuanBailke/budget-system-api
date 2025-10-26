@@ -1,4 +1,4 @@
-package br.com.ztechnology.budget_system_api.model;
+package br.com.ztechnology.budget_system_api.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,10 +9,10 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "id")
 @Entity
-@Table(name = "tb_itens_ou_servicos")
-public class ItemOuServico {
+@Table(name = "tb_itens_pedidos")
+public class ItemPedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +20,9 @@ public class ItemOuServico {
 
     @Column(nullable = false)
     private String descricao;
+
+    @Column(nullable = false)
+    private BigDecimal quantidade;
 
     @Column(nullable = false)
     private BigDecimal precoUnitario;

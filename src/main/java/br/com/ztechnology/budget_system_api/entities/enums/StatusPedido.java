@@ -1,4 +1,4 @@
-package br.com.ztechnology.budget_system_api.model.enums;
+package br.com.ztechnology.budget_system_api.entities.enums;
 
 public enum StatusPedido {
     ORCAMENTO,

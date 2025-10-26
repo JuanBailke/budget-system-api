@@ -1,19 +1,20 @@
-package br.com.ztechnology.budget_system_api.model;
+package br.com.ztechnology.budget_system_api.entities;
 
-import br.com.ztechnology.budget_system_api.model.enums.StatusPedido;
+import br.com.ztechnology.budget_system_api.entities.enums.StatusPedido;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "id")
 @Entity
 @Table(name = "tb_pedidos")
 public class Pedido {
@@ -59,7 +60,7 @@ public class Pedido {
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ItemOuServico> itens;
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<ItemPedido> itens = new ArrayList<>();
 
 }
