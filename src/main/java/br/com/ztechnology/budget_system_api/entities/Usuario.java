@@ -4,6 +4,9 @@ import br.com.ztechnology.budget_system_api.entities.enums.PerfilUsuario;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,6 +28,13 @@ public class Usuario {
 
     @Column(nullable = false)
     private String senha;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "empresa_id", nullable = false)
+    private Empresa empresa;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Pedido> pedidos = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

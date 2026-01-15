@@ -39,6 +39,9 @@ public class Empresa{
     @Column(nullable = false)
     private LocalDateTime dataCadastro;
 
+    @Column(nullable = true)
+    private String endereco;
+
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Usuario> usuarios = new ArrayList<>();
 

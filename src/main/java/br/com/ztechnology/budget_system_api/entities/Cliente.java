@@ -3,6 +3,9 @@ package br.com.ztechnology.budget_system_api.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -30,4 +33,11 @@ public class Cliente {
 
     @Column(nullable = true)
     private String endereco;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "empresa_id", nullable = false)
+    private Empresa empresa;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos = new ArrayList<>();
 }

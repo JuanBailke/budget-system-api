@@ -26,4 +26,8 @@ public class ItemPedido {
 
     @Column(nullable = false)
     private BigDecimal precoUnitario;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pedido_id", nullable = false)
+    private Pedido pedido;
 }

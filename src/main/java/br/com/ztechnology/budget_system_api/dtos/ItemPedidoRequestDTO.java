@@ -1,0 +1,14 @@
+package br.com.ztechnology.budget_system_api.dtos;
+
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+import java.math.BigDecimal;
+
+public record ItemPedidoRequestDTO(
+        @NotBlank String descricao,
+        @NotNull @DecimalMin("0.01") BigDecimal quantidade,
+        @NotNull @DecimalMin("0.01") BigDecimal precoUnitario
+) {
+}
