@@ -14,6 +14,8 @@ import br.com.ztechnology.budget_system_api.repositories.PedidoRepository;
 import br.com.ztechnology.budget_system_api.repositories.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,8 +65,8 @@ public class PedidoService {
         return pedidoRepository.findById(id).map(PedidoMapper::toResponseDTO);
     }
 
-    public List<PedidoResponseDTO> listarPedidos() {
-        return pedidoRepository.findAll().stream().map(PedidoMapper::toResponseDTO).collect(Collectors.toList());
+    public Page<PedidoResponseDTO> listarPedidos(Pageable pageable) {
+        return pedidoRepository.findAll(pageable).map(PedidoMapper::toResponseDTO);
     }
 
     public void deletarPedido(Long id) {

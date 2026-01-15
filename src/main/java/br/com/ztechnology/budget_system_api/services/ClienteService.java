@@ -8,11 +8,11 @@ import br.com.ztechnology.budget_system_api.repositories.ClienteRepository;
 import br.com.ztechnology.budget_system_api.repositories.EmpresaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -41,8 +41,8 @@ public class ClienteService {
         return clienteRepository.findById(id).map(ClienteMapper::toDTO);
     }
 
-    public List<ClienteDTO> listarClientes() {
-        return clienteRepository.findAll().stream().map(ClienteMapper::toDTO).collect(Collectors.toList());
+    public Page<ClienteDTO> listarClientes(Pageable pageable) {
+        return clienteRepository.findAll(pageable).map(ClienteMapper::toDTO);
     }
 
     public void deletarCliente(Long id) {

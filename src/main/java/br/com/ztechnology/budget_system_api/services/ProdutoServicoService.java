@@ -8,11 +8,11 @@ import br.com.ztechnology.budget_system_api.repositories.EmpresaRepository;
 import br.com.ztechnology.budget_system_api.repositories.ProdutoServicoRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -41,8 +41,8 @@ public class ProdutoServicoService {
         return produtoServicoRepository.findById(id).map(ProdutoServicoMapper::toDTO);
     }
 
-    public List<ProdutoServicoDTO> listarProdutosServicos() {
-        return produtoServicoRepository.findAll().stream().map(ProdutoServicoMapper::toDTO).collect(Collectors.toList());
+    public Page<ProdutoServicoDTO> listarProdutosServicos(Pageable pageable) {
+        return produtoServicoRepository.findAll(pageable).map(ProdutoServicoMapper::toDTO);
     }
 
     public void deletarProdutoServico(Long id) {
