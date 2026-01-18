@@ -1,4 +1,9 @@
 HELP.md
+# Arquivos de IDE
+.idea/
+*.iml
+
+# Arquivos de Build
 target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -12,6 +17,8 @@ target/
 .settings
 .springBeans
 .sts4-cache
+# Arquivos de Log
+*.log
 
 ### IntelliJ IDEA ###
 .idea
@@ -31,3 +38,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Arquivo de variáveis de ambiente
+.env
