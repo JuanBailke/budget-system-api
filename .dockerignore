@@ -1,0 +1,23 @@
+# Ignorar a pasta de saída do Maven. O build do Docker irá gerá-la dentro do contêiner.
+target/
+
+# Ignorar arquivos de log
+*.log
+logs/
+
+# Ignorar metadados do Git
+.git/
+.gitignore
+
+# Ignorar arquivos e diretórios de IDEs
+.idea/
+*.iml
+.vscode/
+
+# Ignorar arquivos de configuração do Docker que não precisam estar na imagem
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Ignorar arquivo de variáveis de ambiente
+.env
